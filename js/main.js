@@ -16,22 +16,22 @@ var gWatchInterval;
 var isFirstClick = true;
 var gStartTime;
 
-const MINE = '../img/black-bomb.png';
-const REDMINE = '../img/bomb.png'
-const HAPPY = './img/smile.png';
-const SAD = './img/sad.png'
-const WINNER = './img/sunglasses.png'
-const FLAG = '../img/flag.png';
-const EMPTY = '../img/empty.png ';
-const NUM1 = '../img/num1.png ';
-const NUM2 = '../img/num2.png ';
-const NUM3 = '../img/num3.png ';
-const NUM4 = '../img/num4.png ';
-const NUM5 = '../img/num5.png ';
-const NUM6 = '../img/num6.png ';
-const NUM7 = '../img/num7.png ';
-const NUM8 = '../img/num8.png ';
-const COVER = '../img/cover.png';
+const MINE = 'img/black-bomb.png';
+const REDMINE = 'img/bomb.png'
+const HAPPY = 'img/smile.png';
+const SAD = 'img/sad.png'
+const WINNER = 'img/sunglasses.png'
+const FLAG = 'img/flag.png';
+const EMPTY = 'img/empty.png ';
+const NUM1 = 'img/num1.png ';
+const NUM2 = 'img/num2.png ';
+const NUM3 = 'img/num3.png ';
+const NUM4 = 'img/num4.png ';
+const NUM5 = 'img/num5.png ';
+const NUM6 = 'img/num6.png ';
+const NUM7 = 'img/num7.png ';
+const NUM8 = 'img/num8.png ';
+const COVER = 'img/cover.png';
 
 
 
