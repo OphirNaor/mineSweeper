@@ -1,26 +1,86 @@
 h1 {
-    font-family: Georgia, sans-serif;
+font-family: Georgia, sans-serif;
   font-size: 5em;
   letter-spacing: -2px;
   text-align: center;
+  text-shadow: 5px 5px 10px #ff0000;
+ 
 }
 
 .board {
     border:1px solid black;
     text-align: center;
     font-size:1.4em;
-
-}
+    margin-left: 500px;
+       
+    }
 
 .cell {
     border:1px solid black;
-    width: 40px;
-    height:40px;
+    width: 35px;
+    height: 35px;
     text-align: center;
     font-size:1.4em;
+    padding: 1px;
+    background-color: grey;
+    outline: 5px solid #000;
+    outline-offset: 1px;
+    cursor: pointer;
+    background-size: cover;
+  
+       
 }
 
 .center {
-    margin-left: auto;
-    margin-right: auto;
+    margin-left: 200px;
+    margin-right:180px;
+}
+
+.restart {
+    margin-left: 50%;
+    margin-bottom: 15px;
+    cursor: pointer;
+    background-size: cover;
+    width: 30px;
+    height: 30px;
+    }
+
+
+body {
+    background: #fff
+    url(../img/background.jpg) center top/cover no-repeat padding-box local;
+
+}
+
+.button {
+    box-shadow: 3px 4px 0px 0px #464f52;
+	background:linear-gradient(to bottom, #4d474d 5%, #f0ca99 100%);
+	background-color:#4d474d;
+	border-radius:15px;
+	border:1px solid #d6bcd6;
+	display:inline-block;
+	cursor:pointer;
+	color:#3a8a9e;
+	font-family:Arial;
+	font-size:17px;
+	padding:7px 25px;
+	text-decoration:none;
+	text-shadow:0px 1px 0px #262a4d;
+    margin: 10px;
+
+
+}
+
+.btn-contianer{
+    margin-left: 350px;
+}
+
+.timer {
+    width: 100px;
+    height: 50px;
+    font-family:Arial;
+	font-size:40px;
+    background-color: rgb(125, 128, 131);
+    outline: 5px solid #000;
+
 }
