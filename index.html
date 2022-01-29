@@ -10,16 +10,16 @@
 </head>
 
 <body class="center" onload="init()">
-    <h1>Mine Sweeper</h1>
-    <div class="timer">0.000</div>
-    <img src="./img/smile.png" class="restart" onclick="restartGame(this)">
+    <h5>Minesweeper</h5>
+    <div class="lives">lives <span> </span> </div>
+    <div class="timer">Time: 00:00</div> <br> <br>
     <div class=" btn-contianer">
         <button id="btnBeginner" class=button onclick="setDifficulty(this, 4)"> Beginner </button>
         <button id="btnStandard" class=button onclick="setDifficulty(this, 5)"> Standard </button>
         <button id="btnExpert" class=button onclick="setDifficulty(this, 6)"> Expert </button>
     </div>
+    <img src="./img/smile.png" class="restart" onclick="restartGame(this)">
     <table class="board"></table>
-
 
 
 

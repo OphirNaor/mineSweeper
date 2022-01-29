@@ -1,48 +1,68 @@
-h1 {
+h5 {
 font-family: Georgia, sans-serif;
-  font-size: 5em;
+  font-size: 60px;
   letter-spacing: -2px;
   text-align: center;
   text-shadow: 5px 5px 10px #ff0000;
+  margin-bottom: 25px;
+  margin-block-end: 0px;
+  margin-top: 25px;
  
 }
 
 .board {
+  
     border:1px solid black;
     text-align: center;
     font-size:1.4em;
-    margin-left: 500px;
+    margin-left: 550px;
+    table-layout: fixed;
+    margin-top: 50px;
+    margin-block-end: 0px;
+    width: 50px;
+    height: 50px;
+    margin: 0 auto;
+    margin-top: 175px;
+
        
     }
 
+    
 .cell {
     border:1px solid black;
-    width: 35px;
-    height: 35px;
+    width: 30px;
+    height: 30px;
     text-align: center;
     font-size:1.4em;
-    padding: 1px;
+    padding: 2px;
     background-color: grey;
     outline: 5px solid #000;
     outline-offset: 1px;
     cursor: pointer;
     background-size: cover;
+    
   
        
 }
 
 .center {
-    margin-left: 200px;
-    margin-right:180px;
+    margin-left: 100px;
+    margin-right:140px;
+    
 }
 
 .restart {
-    margin-left: 50%;
-    margin-bottom: 15px;
+  
     cursor: pointer;
     background-size: cover;
     width: 50px;
     height: 50px;
+    margin-block-end: 0px;
+    position: absolute;
+    left: 47%;
+    top: 30%;
+   
+
     }
 
 
@@ -60,27 +80,106 @@ body {
 	border:1px solid #d6bcd6;
 	display:inline-block;
 	cursor:pointer;
-	color:#3a8a9e;
+	color:#63252a;
 	font-family:Arial;
 	font-size:17px;
 	padding:7px 25px;
 	text-decoration:none;
 	text-shadow:0px 1px 0px #262a4d;
     margin: 10px;
+    margin-bottom: 50px;
+    
 
 
 }
 
 .btn-contianer{
-    margin-left: 350px;
+    /* margin-left: 450px; */
+    position: absolute;
+    top: 20%;
+    left: 35%;
+    
 }
 
 .timer {
-    width: 100px;
-    height: 50px;
-    font-family:Arial;
-	font-size:40px;
+    display: inline; 
+    width: 200px;
+    height: 25px;
+   font-size:25px;
     background-color: rgb(125, 128, 131);
     outline: 5px solid #000;
+    padding: 20px;
+    -webkit-box-shadow: 4px -4px 15px 0px #FF1F1F, 12px -11px 7px 0px #FF9376, 20px -5px 7px 0px #FFE264, 20px 6px 7px 0px #F6FF33, 13px 12px 17px 0px #FF9527, 2px 17px 17px 0px #FF0000, -9px 21px 18px 0px #FFF212, -9px 6px 11px 0px #FF0808, -11px -9px 11px 0px #FFFA17, -11px -9px 11px 0px #FFFA17, -22px 7px 9px 6px rgba(139,139,139,0); 
+    box-shadow: 4px -4px 15px 0px #FF1F1F, 12px -11px 7px 0px #FF9376, 20px -5px 7px 0px #FFE264, 20px 6px 7px 0px #F6FF33, 13px 12px 17px 0px #FF9527, 2px 17px 17px 0px #FF0000, -9px 21px 18px 0px #FFF212, -9px 6px 11px 0px #FF0808, -11px -9px 11px 0px #FFFA17, -11px -9px 11px 0px #FFFA17, -22px 7px 9px 6px rgba(139,139,139,0);
+    /* margin-left: 75px; */
+    text-align: center;
+    border-radius:75px;
+    -moz-border-radius:75px;
+    -webkit-border-radius:75px;
+    font-family: Impact, Charcoal, sans-serif;
+    font-size: 22px;
+    letter-spacing: 0px;
+    word-spacing: 2px;
+    color: #000000;
+    font-weight: 700;
+    text-decoration: none;
+    font-style: normal;
+    font-variant: normal;
+    text-transform: none;
+    position: absolute;
+    top: 20%;
+    left: 70%;
+    
+    
 
 }
+
+.lives {
+    display: inline;  
+    width: 200px;
+    height: 25px;
+    background-color: rgb(50, 155, 85);
+    outline: 5px solid #000;
+    padding: 20px;
+    /* margin-left: 100px; */
+    text-align: center;
+    border-radius:75px;
+    -moz-border-radius:75px;
+    -webkit-border-radius:75px;
+    /* margin-top: 75px; */
+    font-family: Impact, Charcoal, sans-serif;
+    font-size: 22px;
+    letter-spacing: 0px;
+    word-spacing: 2px;
+    color: #000000;
+    font-weight: 700;
+    text-decoration: none;
+    font-style: normal;
+    font-variant: normal;
+    text-transform: none;
+    -webkit-box-shadow: 4px -4px 15px 0px #FF1F1F, 12px -11px 7px 0px #FF9376, 20px -5px 7px 0px #FFE264, 20px 6px 7px 0px #F6FF33, 13px 12px 17px 0px #FF9527, 2px 17px 17px 0px #FF0000, -9px 21px 18px 0px #FFF212, -9px 6px 11px 0px #FF0808, -11px -9px 11px 0px #FFFA17, -11px -9px 11px 0px #FFFA17, -22px 7px 9px 6px rgba(139,139,139,0); 
+    box-shadow: 4px -4px 15px 0px #FF1F1F, 12px -11px 7px 0px #FF9376, 20px -5px 7px 0px #FFE264, 20px 6px 7px 0px #F6FF33, 13px 12px 17px 0px #FF9527, 2px 17px 17px 0px #FF0000, -9px 21px 18px 0px #FFF212, -9px 6px 11px 0px #FF0808, -11px -9px 11px 0px #FFFA17, -11px -9px 11px 0px #FFFA17, -22px 7px 9px 6px rgba(139,139,139,0);
+    position: absolute;
+    top: 20%;
+    left: 10%;
+
+      
+
+       
+   
+}
+
+.livesDown {
+    display: none;
+    width: 75px;
+    height: 25px;
+    color: rgb(189, 84, 35);
+    padding: 50px;
+    font-size: 22px;
+    background-color: #272121;
+    border:1px solid #d6bcd6;
+
+}
+
+  
+  

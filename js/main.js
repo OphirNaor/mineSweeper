@@ -1,9 +1,10 @@
-'use script'
+'use strict'
 
 var gBoard;
 var gLevel = {
     size: 4,
-    mines: 2
+    mines: 2,
+    lives: 1
 };
 var gGame = {
     isOn: true,
@@ -15,31 +16,35 @@ var gGame = {
 var gWatchInterval;
 var isFirstClick = true;
 var gStartTime;
-
-const MINE = 'img/black-bomb.png';
-const REDMINE = 'img/bomb.png'
-const HAPPY = 'img/smile.png';
-const SAD = 'img/sad.png'
-const WINNER = 'img/sunglasses.png'
-const FLAG = 'img/flag.png';
-const EMPTY = 'img/empty.png ';
-const NUM1 = 'img/num1.png ';
-const NUM2 = 'img/num2.png ';
-const NUM3 = 'img/num3.png ';
-const NUM4 = 'img/num4.png ';
-const NUM5 = 'img/num5.png ';
-const NUM6 = 'img/num6.png ';
-const NUM7 = 'img/num7.png ';
-const NUM8 = 'img/num8.png ';
-const COVER = 'img/cover.png';
+var gLives;
 
 
+const MINE = '../img/black-bomb.png';
+const REDMINE = '../img/bomb.png'
+const HAPPY = '../img/smile.png';
+const SAD = '../img/sad.png'
+const WINNER = '../img/sunglasses.png'
+const FLAG = '../img/flag.png';
+const EMPTY = '../img/empty.png ';
+const NUM1 = '../img/num1.png ';
+const NUM2 = '../img/num2.png ';
+const NUM3 = '../img/num3.png ';
+const NUM4 = '../img/num4.png ';
+const NUM5 = '../img/num5.png ';
+const NUM6 = '../img/num6.png ';
+const NUM7 = '../img/num7.png ';
+const NUM8 = '../img/num8.png ';
+const COVER = '../img/cover.png';
+const LIFE = ' 🟢';
+const NOLIFE = ' ❌ ';
 
 
 function init() {
+    gLives = gLevel.lives;
     gGame.isOn = true;
     gBoard = buildBoard();
     renderBoard();
+    updateLives();
 
 }
 
@@ -63,7 +68,6 @@ function buildBoard() {
     console.table(board);
     return board;
 }
-
 
 function setMinesNegsCount(board) {
     for (var i = 0; i < board.length; i++) {
@@ -97,19 +101,6 @@ function setMinesNegsCount(board) {
         }
     }
 
-}
-
-
-function placeMines(board, mineCount) {
-    var placedMinesCount = 0;
-    while (placedMinesCount < mineCount) {
-        var row = getRandomInt(1, board.length);
-        var col = getRandomInt(1, board[0].length);
-        if (!board[row][col].isMine) {
-            board[row][col].isMine = true;
-            placedMinesCount++;
-        }
-    }
 }
 
 function renderBoard() {
@@ -157,45 +148,25 @@ function addClickListners() {
     }
 }
 
-
-
-function getNumImg(num) {
-    switch (num) {
-        case 0:
-            return EMPTY;
-        case 1:
-            return NUM1;
-        case 2:
-            return NUM2;
-        case 3:
-            return NUM3;
-        case 4:
-            return NUM4;
-        case 5:
-            return NUM5;
-        case 6:
-            return NUM6;
-        case 7:
-            return NUM7;
-        case 8:
-            return NUM8;
-
-        default:
-            return COVER;
-    }
-}
-
-
 function cellClicked(event, row, col) {
     if (!gGame.isOn) return;
     if (isFirstClick) {
         startStopWatch()
         isFirstClick = false;
+        placeMines(gBoard, gLevel.mines, row, col)
+        setMinesNegsCount(gBoard);
     }
     if (!gBoard[row][col].isShown) {
         if (gBoard[row][col].isMine) {
             playAudio('sound/bomb.wav');
-            gameOver(false, row, col);
+            gLives--;
+            updateLives();
+            if (gLives === 0) {
+                gameOver(false, row, col);
+            } else {
+                alert('You steped on a mine, Be careful');
+
+            }
         } else {
             gBoard[row][col].isShown = true;
             if (gBoard[row][col].minesAroundCount === 0) { // cell without negs
@@ -210,34 +181,6 @@ function cellClicked(event, row, col) {
 }
 
 
-function revealNegs(row, col) { // reveal all the negs of cell at position [row], [col]
-    if (gBoard[row - 1] && gBoard[row - 1][col - 1]) {
-        gBoard[row - 1][col - 1].isShown = true
-    }
-    if (gBoard[row - 1] && gBoard[row - 1][col]) {
-        gBoard[row - 1][col].isShown = true
-    }
-    if (gBoard[row - 1] && gBoard[row - 1][col + 1]) {
-        gBoard[row - 1][col + 1].isShown = true
-    }
-    if (gBoard[row] && gBoard[row][col + 1]) {
-        gBoard[row][col + 1].isShown = true
-    }
-    if (gBoard[row + 1] && gBoard[row + 1][col + 1]) {
-        gBoard[row + 1][col + 1].isShown = true
-    }
-    if (gBoard[row + 1] && gBoard[row + 1][col]) {
-        gBoard[row + 1][col].isShown = true
-    }
-    if (gBoard[row + 1] && gBoard[row + 1][col - 1]) {
-        gBoard[row + 1][col - 1].isShown = true
-    }
-    if (gBoard[row] && gBoard[row][col - 1]) {
-        gBoard[row][col - 1].isShown = true
-    }
-    return;
-
-}
 
 function gameOver(isWin, row, col) { // the function get the location of the click bomb
     var elrstBtn = document.querySelector('.restart');
@@ -254,15 +197,6 @@ function gameOver(isWin, row, col) { // the function get the location of the cli
     endStopWatch();
 }
 
-function revealAllMine() {
-    for (var i = 0; i < gBoard.length; i++) {
-        for (var j = 0; j < gBoard[0].length; j++) {
-            if (gBoard[i][j].isMine) {
-                gBoard[i][j].isShown = true;
-            }
-        }
-    }
-}
 
 
 function restartGame(elrstBtn) {
@@ -271,8 +205,11 @@ function restartGame(elrstBtn) {
     gBoard = buildBoard();
     renderBoard();
     var elTime = document.querySelector('.timer')
-    elTime.innerText = '0.000';
+    elTime.innerText = 'Time: 00:00';
     endStopWatch();
+    gLives = gLevel.lives;
+    updateLives();
+
 
     elrstBtn.src = HAPPY;
 }
@@ -282,23 +219,27 @@ function setDifficulty(elDifficulty) {
         case 'Beginner':
             gLevel = {
                 size: 4,
-                mines: 2
+                mines: 2,
+                lives: 1
             }
             break;
         case 'Standard':
             gLevel = {
                 size: 8,
-                mines: 12
+                mines: 12,
+                lives: 3
             }
             break;
         case 'Expert':
             gLevel = {
                 size: 12,
-                mines: 30
+                mines: 30,
+                lives: 3
+
             }
             break;
     }
-    init();
+    restartGame();
 }
 
 
@@ -319,3 +260,18 @@ function checkWin() {
     else return false;
 }
 
+
+function updateLives() {
+    var elLives = document.querySelector(".lives span");
+    if (gLives === 0) {
+        elLives.innerHTML = NOLIFE;
+    } else {
+        var lives = '';
+        for (var i = 0; i < gLives; i++) {
+            lives += LIFE;
+        }
+        lives += ' ';
+        elLives.innerHTML = lives;
+    }
+
+}
